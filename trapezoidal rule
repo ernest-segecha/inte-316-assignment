@@ -1,0 +1,50 @@
+import numpy as np
+import matplotlib.pyplot as plt
+
+def trapezoidal_rule(f, a, b, n):
+    """
+    Approximate the definite integral of f from a to b using the Trapezoidal Rule.
+    
+    Parameters:
+    f (function): The integrand.
+    a (float): The start point of the interval.
+    b (float): The end point of the interval.
+    n (int): The number of subintervals.
+    
+    Returns:
+    float: The approximate value of the integral.
+    """
+    x = np.linspace(a, b, n+1)
+    y = f(x)
+    h = (b - a) / n
+    integral = (h / 2) * np.sum(y[0:-1] + y[1:])
+    return integral
+
+
+def f(x):
+    return np.sin(x)  
+a = 0
+b = np.pi
+
+
+n = 10
+
+
+integral_value = trapezoidal_rule(f, a, b, n)
+
+print(f"Approximate value of the integral: {integral_value}")
+
+
+x = np.linspace(a, b, 1000)
+y = f(x)
+plt.plot(x, y, 'r', label='f(x)')
+
+x_trap = np.linspace(a, b, n+1)
+y_trap = f(x_trap)
+plt.fill_between(x_trap, y_trap, step='pre', alpha=0.4)
+
+plt.title('Trapezoidal Rule')
+plt.xlabel('x')
+plt.ylabel('f(x)')
+plt.legend()
+plt.show()
