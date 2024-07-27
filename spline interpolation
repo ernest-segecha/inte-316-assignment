@@ -1,0 +1,10 @@
+import numpy as np
+from scipy.interpolate import CubicSpline
+
+x = np.array([1, 2, 3, 4, 5])
+y = np.array([3, 2, 5, 7, 6])
+
+cs = CubicSpline(x, y)
+
+result = cs(2.5)
+print(result)
