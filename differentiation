@@ -1,0 +1,7 @@
+import numpy as np
+import sympy as sp
+x = sp.symbols('x')
+f = x**2 + 2*x + 1
+df_dx = sp.diff(f, x)
+print("differentiated function:")
+print(df_dx)
