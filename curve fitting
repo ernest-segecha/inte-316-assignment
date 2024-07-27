@@ -1,0 +1,15 @@
+import numpy as np
+import scipy.optimize as opt
+from scipy.optimize import curve_fit
+import matplotlib.pyplot as plt
+def func(x, a, b, c):
+    return a* x**2 + b * x + c
+y_data = np.array([0, 1, 2, 3, 4])
+x_data = np.array([1, 4, 9, 16, 25])
+params, params_covariance = curve_fit(func, x_data, y_data)
+print("fitted parameters:")
+print(params)
+plt.scatter(x_data, y_data, label='Data')
+plt.plot(x_data, func(x_data, *params),label='fitted curve', color='red')
+plt.legend()
+plt.show()
